@@ -350,11 +350,11 @@ function displayFavorites() {
 // show saved favorites when the page loads
 displayFavorites();
 
-// changing between normal mode and dark mode
+// changing between light mode and dark mode
 themeBtn.addEventListener("click", function () {
 
-    // adding or removing the dark-theme class from the body
-    // toggle if the body has dark theme remove it if not add it
+    // add or remove the dark theme class
+    // checks if the body currently has darktheme
     document.body.classList.toggle("dark-theme");
-
+    
 });
