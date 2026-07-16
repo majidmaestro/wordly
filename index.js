@@ -349,3 +349,12 @@ function displayFavorites() {
 }
 // show saved favorites when the page loads
 displayFavorites();
+
+// changing between normal mode and dark mode
+themeBtn.addEventListener("click", function () {
+
+    // adding or removing the dark-theme class from the body
+    // toggle if the body has dark theme remove it if not add it
+    document.body.classList.toggle("dark-theme");
+
+});

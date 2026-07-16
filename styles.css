@@ -209,3 +209,43 @@ ul {
         gap: 10px;
     }
 }
+
+/* dark theme when the user clicks the button */
+body.dark-theme {
+    background-color: #121826;
+    color: #f8fafc;
+}
+
+
+/* changing the cards and sections in dark mode */
+body.dark-theme header,
+body.dark-theme .search-section,
+body.dark-theme .results-section,
+body.dark-theme .favorites-section {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+
+/* changing input appearance */
+body.dark-theme input {
+    background-color: #334155;
+    color: white;
+    border-color: #475569;
+}
+
+
+/* buttons in dark mode */
+body.dark-theme button {
+    background-color: #38bdf8;
+    color: #082f49;
+}
+
+
+/* text inside sections */
+body.dark-theme p,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+    color: #f8fafc;
+}
