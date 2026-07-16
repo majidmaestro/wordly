@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wordly Dictionary SPA</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Wordly Dictionary</h1>
+
+        <p>
+            Search for words and discover meanings, pronunciation,
+            examples, synonyms, and more.
+        </p>
+
+        <button id="themeBtn" type="button" aria-label="Change theme">
+            Change Theme
+        </button>
+    </header>
+
+
+    <main>
+
+        <!-- Search area -->
+
+        <section class="search-section">
+
+            <form id="searchForm">
+
+                <label for="wordInput">
+                    Enter a word:
+                </label>
+
+                <input 
+                    id="wordInput"
+                    name="word"
+                    type="text"
+                    placeholder="Search word..."
+                    autocomplete="off"
+                >
+
+                <button type="submit" id="searchBtn">
+                    Search
+                </button>
+
+            </form>
+
+
+            <p id="loading" class="hidden">
+                Searching...
+            </p>
+
+
+            <p id="error" class="hidden" role="alert"></p>
+
+        </section>
+
+
+
+        <!-- Word information -->
+
+        <section id="results" class="results-section">
+
+            <h2 id="displayWord"></h2>
+
+            <p id="phonetic"></p>
+
+
+            <button id="audioBtn" class="hidden" type="button">
+                Play Audio
+            </button>
+
+
+            <button id="favoriteBtn" class="hidden" type="button">
+                Save Favorite
+            </button>
+
+
+
+            <div id="meanings"></div>
+
+
+            <div id="synonyms"></div>
+
+
+            <div id="antonyms"></div>
+
+
+            <p id="source"></p>
+
+
+        </section>
+
+
+
+
+        <!-- Saved words -->
+
+        <section class="favorites-section">
+
+            <h2>Favorite Words</h2>
+
+
+            <p id="emptyFavorites">
+                No favorite words saved yet.
+            </p>
+
+
+            <div id="favoritesList"></div>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+</html>
