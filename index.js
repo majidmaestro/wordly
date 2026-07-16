@@ -16,6 +16,7 @@ const audioBtn = document.getElementById("audioBtn");
 const favoriteBtn = document.getElementById("favoriteBtn");
 
 const meaningsContainer = document.getElementById("meanings");
+const examplesContainer = document.getElementById("examples");
 const synonymsContainer = document.getElementById("synonyms");
 const antonymsContainer = document.getElementById("antonyms");
 
@@ -146,7 +147,7 @@ async function fetchWord(word) {
 function displayWord(data) {
   // get the first word for the API response (the API returns an array of words, but we only want the first one)
   const entry = data[0]; // because the API returns an array of words, we only want the first one
-  console.log("displayedWord is running");
+  //   console.log("displayedWord is running");
   // display the word
   wordTitle.textContent = entry.word;
 
@@ -159,19 +160,22 @@ function displayWord(data) {
     if (phoneticData) {
       phonetic.textContent = phoneticData.text;
     } else {
-      phonetic.textContent = "No pronounciation available.";
+      phonetic.textContent = "No pronunciation available.";
     }
   } else {
-    phonetic.textContent = "No pronounciation available.";
+    phonetic.textContent = "No pronunciation available.";
   }
 
   // clear previous things b4 showing new data
   // empties the meanings container so that we can add new meanings for the new word
   meaningsContainer.innerHTML = "";
+  examplesContainer.innerHTML = "";
   synonymsContainer.innerHTML = "";
   antonymsContainer.innerHTML = "";
+  sourceContainer.innerHTML = "";
 
   // arrays where we will store all synonyms and antonyms
+  let examples = [];
   let synonyms = [];
   let antonyms = [];
 
@@ -184,6 +188,21 @@ function displayWord(data) {
     // create paragraph for definition
     const definition = document.createElement("p");
     definition.textContent = meaning.definitions[0].definition;
+
+    // check if the defination has an example sentence
+    if (meaning.definitions[0].example) {
+      examples.push(meaning.definitions[0].example);
+    }
+
+    // display examples only when they exist
+    if (examples.length > 0) {
+      examplesContainer.innerHTML = `
+        <h3>Examples</h3>
+        <p>${examples.join("<br>")}</p>
+    `;
+    } else {
+      examplesContainer.innerHTML = "";
+    }
 
     // add them to the meanings section
     meaningsContainer.appendChild(partOfSpeech);
@@ -233,11 +252,11 @@ function displayWord(data) {
   // go through all the phonetics
   entry.phonetics.forEach(function (item) {
     // if this phonetic has an audio link, save it
-    if (item.audio && currentAudio === null) {
+    if (item.audio) {
       currentAudio = item.audio;
     }
   });
-  console.log(currentAudio);
+  //   console.log(currentAudio);
 
   // show the audio button only if we found an audio file
   if (currentAudio) {
@@ -247,6 +266,18 @@ function displayWord(data) {
   }
   // show the favorite button after a word is successfully found
   favoriteBtn.classList.remove("hidden");
+
+  // display source link if the API provides one
+  if (entry.sourceUrls && entry.sourceUrls.length > 0) {
+    sourceContainer.innerHTML = `
+        Source:
+        <a href="${entry.sourceUrls[0]}" target="_blank">
+            ${entry.sourceUrls[0]}
+        </a>
+    `;
+  } else {
+    sourceContainer.innerHTML = "";
+  }
 }
 
 // function to play the word pronounciation
@@ -268,7 +299,7 @@ function playAudio() {
 // function to save a word as a favorite
 function saveFavorite() {
   // checking if there is a word searched
-  console.log("favourite button clicked");
+//   console.log("favourite button clicked");
   if (!currentWord) {
     return;
   }
@@ -290,7 +321,7 @@ function saveFavorite() {
   displayFavorites();
 
   // small message for testing
-  console.log("Saved favorites:", favorites);
+//   console.log("Saved favorites:", favorites);
 }
 
 // function to display saved favorite words on the page
