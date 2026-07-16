@@ -35,11 +35,11 @@ searchForm.addEventListener("submit", handleSearch);
 
 function handleSearch(event) {
   // prevent the form from submitting normally
-  event.preventDefault(); // prevent the form from submitting normally
+  event.preventDefault(); 
 
   // get the input value and trim whitespace
-  const word = wordInput.value.trim(); // get the input value and trim whitespace
+  const word = wordInput.value.trim(); 
  
   // log the searched word
-  console.log("Searching for:", word); // log the searched word
+  console.log("Searching for:", word); 
 }
