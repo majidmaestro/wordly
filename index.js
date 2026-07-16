@@ -348,6 +348,12 @@ function displayFavorites() {
     const wordText = document.createElement("p");
     wordText.textContent = word;
 
+    wordText.addEventListener("click", function () {
+      wordInput.value = word;
+
+      searchForm.dispatchEvent(new Event("submit"));
+    });
+
     // create remove button
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";

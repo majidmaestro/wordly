@@ -249,3 +249,7 @@ body.dark-theme h2,
 body.dark-theme h3 {
     color: #f8fafc;
 }
+
+.favourite-word {
+    cursor: pointer;
+}
