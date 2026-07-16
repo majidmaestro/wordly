@@ -356,5 +356,5 @@ themeBtn.addEventListener("click", function () {
     // add or remove the dark theme class
     // checks if the body currently has darktheme
     document.body.classList.toggle("dark-theme");
-    
+
 });
