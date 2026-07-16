@@ -116,7 +116,7 @@ async function fetchWord(word) {
         const data = await response.json();
 
         // log the data to the console for debugging purposes
-        console.log("Dictionary data:", data);
+        // console.log("Dictionary data:", data);
 
         // sending the data to the function that will display it to the user
         displayword(data);
@@ -139,10 +139,47 @@ async function fetchWord(word) {
 // function to display the word data to the user
 function displayword(data) {
     // get the first word for the API response (the API returns an array of words, but we only want the first one)
-    const entry = data[0];
+    const entry = data[0]; // because the API returns an array of words, we only want the first one
     
     // display the word 
     wordTitle.textContent = entry.word;
 
     //  check if the API has phonetic information 
+    if (entry.phonetics.length > 0) {
+        // finding the first phoneticthat has text
+        // i go through the phonetic array and i give the first object that actually has pronuncitiation text
+        const phoneticData = entry.phonetics.find(item => item.text);
+
+        if (phoneticData) {
+            phonetic.textContent = phoneticData.text;
+        } else {
+            phonetic.textContent = "No pronounciation available.";
+        }
+    } else {
+        phonetic.textContent = "No pronounciation available.";
+    }
+
+    // clear previous things b4 showing new data
+    // empties the meanings container so that we can add new meanings for the new word
+    meaningsContainer.innerHTML = "";
+
+    // go through the meanings array and display each meaning
+    entry.meanings.forEach(function(meaning) {
+
+        // create a heading for the part of the speeech
+        const partOfSpeech = document.createElement("h3");
+        partOfSpeech.textContent = meaning.partOfSpeech;  // putting teext inside the heading
+
+        // create a paragraph for the definition
+        const defination = document.createElement("p");
+        defination.textContent = meaning.definitions[0].definition;
+
+        // add them to the meaning section
+        meaningsContainer.appendChild(partOfSpeech);
+        meaningsContainer.appendChild(defination);
+
+    });
+
 }
+
+ 
