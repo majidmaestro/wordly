@@ -28,7 +28,7 @@ The project demonstrates modern JavaScript concepts including asynchronous progr
 # Author Information
 **Name:** Abdul Majid Abdullahi
 **Email:** abdullahiabdulmajid848@gmail.com
-**GitHub:** https://github.com/abdulmajid
+**GitHub:** https://github.com/majidmaestro
 ---
 
 # Setup Instructions
@@ -48,7 +48,7 @@ Before running this project, make sure you have:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/wordly.git
+git clone https://github.com/majidmaestro/wordly.git
 ```
 
 ### 2. Open the project folder
@@ -368,7 +368,7 @@ After deployment, add your live project link here.
 Example:
 
 ```
-https://yourusername.github.io/wordly/
+https://majidmaestro.github.io/wordly/
 ```
 
 ---
@@ -380,7 +380,7 @@ After pushing your project, add your repository link here.
 Example:
 
 ```
-https://github.com/yourusername/wordly
+https://github.com/majidmaestro/wordly
 ```
 
 ---
