@@ -66,10 +66,6 @@ async function handleSearch(event) {
   // show the loading message
   setLoading(true);
 
-  // this is just useful while testing
-  // logs the searched word to the console
-  console.log("Searching for:", word);
-
   // get the word from the API - this is an async function that returns a promise
   await fetchWord(currentWord);
 }
@@ -122,10 +118,7 @@ async function fetchWord(word) {
     }
     // convert the response to Json(javascript data) and store it in a variable called data
     const data = await response.json();
-
-    // log the data to the console for debugging purposes
-    // console.log("Dictionary data:", data);
-
+   
     // sending the data to the function that will display it to the user
     displayWord(data);
   } catch (error) {
@@ -134,7 +127,6 @@ async function fetchWord(word) {
       "Something went wrong while loading the definition. Please try again.",
     );
 
-    console.log("Error fetching word:", error);
   } finally {
     // hide the loading message and enable the search button whether the request worked or failed
     // finally always runs whether the request succeeds or fails
@@ -147,7 +139,7 @@ async function fetchWord(word) {
 function displayWord(data) {
   // get the first word for the API response (the API returns an array of words, but we only want the first one)
   const entry = data[0]; // because the API returns an array of words, we only want the first one
-  //   console.log("displayedWord is running");
+  
   // display the word
   wordTitle.textContent = entry.word;
 
