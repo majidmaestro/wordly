@@ -31,7 +31,7 @@ const themeBtn = document.getElementById("themeBtn");
 // When the page first loads, the user has not searched anything - it stays null
 let currentWord = null;
 let currentAudio = null; // store the audio globally so we can play it when the user clicks the audio button
-// storing favorite words
+// storing favorite   words
 // we check localStorage first because the user might already have saved words
 // json converts those strings to arrays - get my favourites if none start with empty array
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -185,28 +185,34 @@ function displayWord(data) {
     const partOfSpeech = document.createElement("h3");
     partOfSpeech.textContent = meaning.partOfSpeech;
 
-    // create paragraph for definition
-    const definition = document.createElement("p");
-    definition.textContent = meaning.definitions[0].definition;
+// add the part of speech heading first
+meaningsContainer.appendChild(partOfSpeech);
 
-    // check if the defination has an example sentence
-    if (meaning.definitions[0].example) {
-      examples.push(meaning.definitions[0].example);
-    }
+// go through every definition for this meaning
+meaning.definitions.forEach(function (definitionItem) {
 
-    // display examples only when they exist
-    if (examples.length > 0) {
-      examplesContainer.innerHTML = `
-        <h3>Examples</h3>
-        <p>${examples.join("<br>")}</p>
-    `;
-    } else {
-      examplesContainer.innerHTML = "";
-    }
+  // create paragraph for each definition
+  const definition = document.createElement("p");
+  definition.textContent = "• " + definitionItem.definition;
 
-    // add them to the meanings section
-    meaningsContainer.appendChild(partOfSpeech);
-    meaningsContainer.appendChild(definition);
+  meaningsContainer.appendChild(definition);
+
+  // if this definition has an example, save it
+  if (definitionItem.example) {
+    examples.push(definitionItem.example);
+  }
+
+});
+
+// display examples only if we found any
+if (examples.length > 0) {
+  examplesContainer.innerHTML = `
+    <h3>Examples</h3>
+    <p>${examples.join("<br>")}</p>
+  `;
+} else {
+  examplesContainer.innerHTML = "";
+}
 
     // check if synonyms exist in the meaning object
     if (meaning.synonyms) {
@@ -339,6 +345,7 @@ function displayFavorites() {
   // hide the empty message if we have favorites
   emptyFavorites.classList.add("hidden");
 
+
   // go through each favorite word and display it
   favorites.forEach(function (word) {
     // create a container for each favorite word
@@ -348,6 +355,10 @@ function displayFavorites() {
     const wordText = document.createElement("p");
     wordText.textContent = word;
 
+    // make it look clickable
+    wordText.classList.add("favorite-word");
+
+    // search again when clicked
     wordText.addEventListener("click", function () {
       wordInput.value = word;
 
@@ -372,8 +383,6 @@ function displayFavorites() {
 
       // refresh the favorites list on the page
       displayFavorites();
-
-      console.log("Removed:", word);
     });
 
     // put everything together
