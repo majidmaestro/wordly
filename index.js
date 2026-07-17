@@ -118,7 +118,6 @@ async function fetchWord(word) {
     }
     // convert the response to Json(javascript data) and store it in a variable called data
     const data = await response.json();
-   
     // sending the data to the function that will display it to the user
     displayWord(data);
   } catch (error) {

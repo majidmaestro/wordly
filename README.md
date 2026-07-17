@@ -1,17 +1,12 @@
 # Wordly Dictionary SPA
-
 ## Project Description
-
 Wordly Dictionary SPA is a modern **Single Page Application (SPA)** built using HTML, CSS, and JavaScript. The application allows users to search for English words and instantly retrieve their meanings, pronunciation, examples, synonyms, antonyms, source references, and pronunciation audio without refreshing the page.
 
 The application communicates with the **Free Dictionary API** using the Fetch API to retrieve live dictionary data. It also allows users to save their favorite words using the browser's **localStorage**, ensuring that saved words remain available even after refreshing or reopening the browser.
 
 The project demonstrates modern JavaScript concepts including asynchronous programming, Fetch API, DOM manipulation, event handling, local storage, and responsive web design.
-
 ---
-
 # Features
-
 - Search for English words instantly
 - Display pronunciation text
 - Play pronunciation audio when available
@@ -29,17 +24,11 @@ The project demonstrates modern JavaScript concepts including asynchronous progr
 - Dark Mode / Light Mode toggle
 - Loading indicator while fetching data
 - Friendly error messages for invalid searches and network failures
-
 ---
-
 # Author Information
-
 **Name:** Abdul Majid Abdullahi
-
 **Email:** abdullahiabdulmajid848@gmail.com
-
 **GitHub:** https://github.com/abdulmajid
-
 ---
 
 # Setup Instructions
