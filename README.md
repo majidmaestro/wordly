@@ -391,7 +391,7 @@ For questions, suggestions, or contributions:
 
 **Email:** abdullahiabdulmajid848@gmail.com
 
-**GitHub:** https://github.com/abdulmajid
+**GitHub:** https://github.com/majidmaestro
 
 ---
 
